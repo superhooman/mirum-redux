@@ -1,0 +1,75 @@
+.item{
+    display: flex;
+    align-items: center;
+    --color: var(--primary);
+    --colorTransparent: var(--primaryTransparent);
+    color: var(--textSecondary);
+    padding: 0 8px;
+    font-size: 14px;
+    border-radius: 4px;
+    margin-bottom: 4px;
+    background-color: transparent;
+    transition: transform .2s ease, color .2s ease;
+}
+
+.item.noIcon{
+    padding: 8px 12px;
+    font-size: 13px;
+}
+
+.item.noIcon::before{
+    content: "";
+    display: block;
+    height: 8px;
+    width: 8px;
+    border-radius: 2px;
+    background-color: var(--border);
+    margin-right: 12px;
+    transition: background-color .2s ease;
+}
+
+
+.item:hover, .active .item{
+    color: var(--text)
+}
+
+.item .icon{
+    margin-right: 12px;
+    padding: 8px;
+    border-radius: 7px;
+    transition: background-color .2s ease;
+}
+
+.item:hover .icon{
+    background-color: var(--colorTransparent);
+}
+
+.active .item .icon{
+    background-color: var(--color);
+    color: #fff;
+}
+
+.item svg{
+    display: block;
+}
+
+.item:active{
+    transform: scale(.98);
+}
+
+.item span{
+    line-height: 1.2;
+}
+
+.item.noIcon span{
+    width: calc(100% - 20px);
+}
+
+.active .item.noIcon{
+    background-color: var(--color);
+    color: #fff;
+}
+
+.active .item.noIcon::before{
+    background-color: #fff;
+}

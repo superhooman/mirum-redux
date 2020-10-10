@@ -1,0 +1,26 @@
+.Loader{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 240px;
+    padding: 24px;
+}
+
+.Loader .element{
+    display: block;
+    height: 32px;
+    width: 32px;
+    border: 2px var(--border) solid;
+    border-top-color: var(--primary);
+    border-radius: 50%;
+    animation: rotate .5s linear infinite;
+}
+
+@keyframes rotate{
+    from{
+        transform: rotate(0deg);
+    }
+    to{
+        transform: rotate(359deg);
+    }
+}

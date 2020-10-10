@@ -1,0 +1,83 @@
+.user{
+    display: flex;
+    align-items: center;
+}
+
+.user .avatar{
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    background-color: var(--border);
+    width: 40px;
+    height: 40px;
+    margin-right: 12px;
+    border-radius: 50%;
+    user-select: none;
+    background-size: cover;
+    background-position: center;
+    box-shadow: 0 0 0 1px rgba(0,0,0,.14) inset;
+    color: var(--textSecondary)
+}
+
+.user:not(.big) .userEmail{
+    display: none;
+}
+
+.user.big .avatar{
+    height: 64px;
+    width: 64px;
+    margin-right: 16px;
+    font-size: 24px;
+}
+
+.user.small .avatar{
+    height: 32px;
+    width: 32px;
+    margin-right: 8px;
+    font-size: 14px;
+}
+
+.userInfo{
+    width: calc(100% - 52px);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.userInfo>*{
+    width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.big .userInfo{
+    width: calc(100% - 80px);
+}
+
+.small .userInfo{
+    width: calc(100% - 40px);
+}
+
+.userName{
+    font-size: 15px;
+}
+
+.user:not(.big) .userName{
+    color: var(--textSecondary)
+}
+
+.big .userName{
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.small .userName{
+    font-size: 14px;
+}
+
+.userEmail{
+    font-size: 14px;
+    color: var(--textSecondary);
+}

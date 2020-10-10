@@ -1,0 +1,65 @@
+.Button {
+  display: block;
+  width: 100%;
+  border: none;
+  color: var(--primary);
+  background-color: transparent;
+  border: 2px var(--primary) solid;
+  padding: 8px 12px;
+  cursor: pointer;
+  border-radius: 5px;
+  appearance: none;
+  transition: border-color 0.2s ease, background-color 0.2s ease,
+    box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.Button.withIcon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.Button.withIcon span {
+  margin-left: 8px;
+}
+
+.Button.small {
+  padding: 4px 12px;
+  font-size: 14px;
+}
+
+.Button:hover {
+  background-color: var(--primaryTransparent);
+}
+
+.Button:focus {
+  box-shadow: 0 4px 8px 0 var(--primaryTransparent);
+  outline: none !important;
+}
+
+.Button:active {
+  transform: scale(0.98);
+}
+
+.Button.primary {
+  background-color: var(--primary);
+  color: #ffffff;
+}
+
+.Button.primary:hover {
+  background-color: var(--primaryLighter);
+  border-color: var(--primaryLighter);
+}
+
+.Button.disabled {
+  cursor: not-allowed;
+  background-color: var(--border) !important;
+  color: var(--textSecondary) !important;
+  border-color: var(--border) !important;
+}
+
+@media (max-width: 460px) {
+  .Button.withIcon span {
+    width: calc(100% - 32px);
+  }
+}

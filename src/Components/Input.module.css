@@ -1,0 +1,29 @@
+.Input {
+  display: flex;
+  flex-direction: column;
+}
+.Input > * {
+  display: block;
+}
+
+.Input label {
+  font-size: 10px;
+  font-weight: 600;
+  margin-bottom: 6px;
+  text-transform: uppercase;
+  color: var(--textSecondary);
+}
+
+.Input input {
+  font-size: 16px;
+  padding: 8px 14px;
+  border: 1px var(--border) solid;
+  background-color: var(--back);
+  color: var(--text);
+  border-radius: 5px;
+}
+
+.Input input:focus {
+  border-color: var(--primary);
+  outline: none;
+}

@@ -6,9 +6,18 @@
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
+    "axios": "^0.20.0",
+    "clsx": "^1.1.1",
+    "moment": "^2.29.1",
     "react": "^16.13.1",
+    "react-collapse": "^5.0.1",
     "react-dom": "^16.13.1",
-    "react-scripts": "3.4.3"
+    "react-input-mask": "^2.0.4",
+    "react-redux": "^7.2.1",
+    "react-router-dom": "^5.2.0",
+    "react-scripts": "3.4.3",
+    "react-toast-notifications": "^2.4.0",
+    "redux": "^4.0.5"
   },
   "scripts": {
     "start": "react-scripts start",

@@ -1,0 +1,53 @@
+.lessonHeader, .card{
+    padding: 20px;
+    border-radius: 13px;
+    border: 1px var(--border) solid;
+}
+
+.lessonHeader h1{
+    font-size: 24px;
+    line-height: 1.2;
+    margin: 0;
+}
+
+.lessonHeader p{
+    font-size: 15px;
+    margin: 8px 0 0 0;
+    color: var(--textSecondary);
+}
+
+.card{
+    margin-top: 24px;
+}
+
+.content img{
+    max-width: 100%;
+}
+
+.resourses video, .resourses audio{
+    max-width: 100%;
+    width: 100%;
+}
+
+.resourses video{
+    border-radius: 7px;
+    outline: none;
+}
+
+.buttons{
+    display: flex;
+    align-items: center;
+    margin-top: 8px;
+}
+
+.buttons:empty{
+    margin: 0;
+}
+
+.buttons>button:first-child{
+    margin-right: 8px;
+}
+
+.buttons>button{
+    width: fit-content;
+}

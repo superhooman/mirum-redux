@@ -1,0 +1,20 @@
+.Settings{
+    max-width: 480px;
+}
+
+.field{
+    margin-bottom: 16px;
+}
+
+.card{
+    padding: 20px;
+    border-radius: 13px;
+    border: 1px var(--border) solid;
+    margin-top: 24px;
+}
+
+.cardTitle{
+    font-size: 20px;
+    margin-bottom: 16px;
+    line-height: 1.2;
+}

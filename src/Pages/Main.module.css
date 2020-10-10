@@ -1,0 +1,81 @@
+.infoBox{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.infoBox:not(:last-of-type){
+    padding-right: 20px;
+    border-right: 1px solid var(--border);
+    margin-right: 20px;
+}
+
+.infoBoxLabel{
+    font-size: 12px;
+    font-weight: 500;
+    white-space: nowrap;
+    color: var(--textSecondary);
+    text-transform: uppercase;
+}
+
+.infoBoxValue{
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 24px;
+    white-space: nowrap;
+}
+
+.boxesWrap{
+    display: flex;
+    overflow-x: auto;
+    padding: 0 10px;
+    width: 100%;
+    -webkit-overflow-scrolling: touch;
+}
+
+.userInfo{
+    width: calc(100% + 10px);
+    position: relative;
+    margin: 24px 0 0 -10px;
+}
+
+.userInfo:after, .userInfo:before {
+    position: absolute;
+    top: 0;
+    content: "";
+    display: block;
+    width: 10px;
+    height: 100%;
+    z-index: 1;
+}
+
+.userInfo:before{
+    background-image: linear-gradient(90deg, var(--back), var(--backTransparent));
+    left: 0
+}
+
+.userInfo:after{
+    background-image: linear-gradient(270deg, var(--back), var(--backTransparent));
+    right: 0;
+}
+
+.cards{
+    margin-top: 16px;
+    display: grid;
+    gap: 24px;
+    grid-template-columns: 1fr 1fr;
+}
+
+.label{
+    margin-top: 24px;
+    font-weight: 500;
+    font-size: 12px;
+    text-transform: uppercase;
+    color: var(--textSecondary)
+}
+
+@media (max-width: 520px){
+    .cards{
+        grid-template-columns: 1fr;
+    }
+}

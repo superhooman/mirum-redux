@@ -1,38 +1,55 @@
-.App {
-  text-align: center;
+body {
+  --text: #222222;
+  --textSecondary: #787b80;
+  --border: #eaeaea;
+  --back: #ffffff;
+  --backTransparent: rgba(255,255,255,0);
+  --primary: #6c19cf;
+  --primaryTransparent: rgba(106, 25, 204, 0.2);
+  --primaryLighter: #813fd1;
+  --green: #2ccc89;
+  --red: #f54849;
+  color: var(--text);
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  background-color: var(--back);
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+body.dark {
+  --back: #131313;
+  --backTransparent: rgba(19, 19, 19, 0);
+  --text: #fbfbfb;
+  --textSecondary: #a8a8a8;
+  --border: #4b4b4b;
+  --primary: #8d39f5;
+  --primaryTransparent:  rgb(127, 38, 235, 0.2);
+  --primaryLighter: #a55cff;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+body.scrollDisabled {
+  overflow: hidden;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.container {
+  max-width: 900px;
+  padding: 0 24px;
+  margin: auto;
 }
 
-.App-link {
-  color: #61dafb;
+a {
+  color: var(--primary) !important;
+  text-decoration: none !important;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
+.divider {
+  width: 100%;
+  height: 1px;
+  background-color: var(--border);
+  margin: 8px 0;
+}
+
+@media (max-width: 768px) {
+  body.scrollDisabledMobile {
+    overflow: hidden;
   }
 }

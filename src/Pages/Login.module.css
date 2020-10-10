@@ -1,0 +1,97 @@
+.Login {
+  margin: auto;
+  display: flex;
+}
+
+.plate {
+  width: 50%;
+  width: 100%;
+}
+
+.plate h1 {
+  font-size: 24px;
+  margin: 0 0 24px 0;
+}
+
+.plate .main {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex-direction: column;
+  align-items: flex-start;
+  min-height: 100vh;
+  padding: 40px;
+  max-width: 400px;
+  margin-left: auto;
+  width: 100%;
+}
+
+.brand{
+  display: flex;
+  align-items: center;
+}
+
+.brand span{
+  width: calc(100% - 44px);
+  margin-left: 12px;
+  text-transform: uppercase;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 3px;
+  color: var(--text);
+}
+
+
+.picture {
+  width: 100%;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: linear-gradient(135deg, #6c19cf 0%, #d93e62 100%);
+}
+
+.picture img {
+  height: 50%;
+}
+
+.field {
+  margin-bottom: 16px;
+}
+
+.Login form {
+  width: 100%;
+}
+
+.link {
+  display: block;
+  width: fit-content;
+  font-size: 14px;
+  margin-top: 12px;
+}
+
+.Login footer {
+  font-size: 14px;
+  margin-top: 24px;
+  color: var(--textSecondary);
+}
+
+.pattern{
+  height: 100%;
+  width: 100%;
+  background-image: url("../Assets/pattern.png");
+  background-size: 200px;
+  opacity: .5;
+}
+
+@media (max-width: 768px){
+  .picture{
+    display: none;
+  }
+  .plate{
+    width: 100%;
+  }
+  .plate .main {
+    margin: auto;
+  }
+}

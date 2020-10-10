@@ -1,0 +1,22 @@
+.Main {
+    width: calc(100% - 320px);
+    padding: 48px 0;
+    margin-left: 320px;
+}
+
+.label{
+    padding: 0 12px;
+    font-size: 12px;
+    margin: 12px 0 8px 0;
+    text-transform: uppercase;
+    color: var(--textSecondary);
+    font-weight: bold;
+}
+
+@media (max-width: 900px){
+    .Main{
+        width: 100%;
+        margin: 0;
+        padding: 96px 0;
+    }
+}

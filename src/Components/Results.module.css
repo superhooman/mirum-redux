@@ -1,0 +1,215 @@
+.header{
+    margin: -24px -24px 8px;
+    border-bottom: 1px var(--border) solid;
+}
+.tabs{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+.tab{
+    padding: 12px 20px;
+    font-weight: 600;
+    cursor: pointer;
+    color: var(--textSecondary);
+    font-size: 14px;
+    border-bottom: 2px transparent solid;
+}
+.tab.active{
+    border-color: var(--primary);
+    color: var(--primary);
+}
+
+.field{
+    padding: 12px 0;
+}
+
+.fieldLabel{
+    font-weight: 500;
+    font-size: 12px;
+    text-transform: uppercase;
+    color: var(--textSecondary);
+}
+
+.fieldValue{
+    font-size: 14px;
+    color: var(--textSecondary);
+}
+
+.fieldValue b{
+    font-size: 24px;
+    font-weight: 600;
+    color: var(--text);
+}
+
+.Variant{
+    display: flex;
+    align-items: center;
+    padding: 12px 0;
+}
+
+.Variant:not(:last-of-type){
+    border-bottom: 1px var(--border) solid;
+}
+
+.Variant span{
+    width: calc(100% - 32px);
+    font-size: 14px;
+    color: var(--textSecondary);
+    transition: color .2s ease;
+}
+
+.dot{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 24px;
+    width: 24px;
+    border-radius: 50%;
+    margin-right: 8px;
+    border: 1px var(--border) solid;
+}
+
+.dot::after{
+    content: "";
+    display: block;
+    height: 12px;
+    width: 12px;
+    background-color: var(--primary);
+    border-radius: 50%;
+    transform: scale(.5);
+    opacity: 0;
+    transition: transform .2s ease, opacity .2s ease;
+}
+
+.selected.dot::after{
+    transform: none;
+    opacity: 1;
+}
+
+.selected + span{
+    color: var(--text)!important;
+}
+
+.Toolbar{
+    margin-top: 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.Toolbar button{
+    width: fit-content;
+}
+
+.Toolbar .arrowButton{
+    padding: 0;
+    appearance: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    background-color: var(--primary);
+    color: #ffffff;
+    width: 32px;
+    height: 32px;
+    outline: none;
+    border-radius: 50%;
+    transition: transform .2s ease;
+    cursor: pointer;
+}
+
+.Toolbar .arrowButton:disabled{
+    background-color: var(--border);
+    color: var(--textSecondary)
+}
+
+.Toolbar .arrowButton:active{
+    transform: scale(.95);
+}
+
+.arrowButton svg{
+    display: block;
+}
+
+.variants{
+    margin-top: 8px;
+}
+
+.answerHeader{
+    border-bottom: 1px var(--border) solid;
+    margin: 0 -24px 16px;
+    position: relative;
+}
+
+.answerHeader>div{
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+.answerHeader::after, .answerHeader::before{
+    position: absolute;
+    top: 0;
+    content: "";
+    display: block;
+    pointer-events: none;
+    width: 24px;
+    height: 100%;
+    z-index: 1;
+}
+
+.answerHeader::after{
+    right: 0;
+    background: linear-gradient(270deg, var(--back), var(--backTransparent));
+}
+
+.answerHeader::before{
+    left: 0;
+    background: linear-gradient(90deg, var(--back), var(--backTransparent));
+}
+
+.stepWrap{
+    display: flex;
+    padding: 8px 24px 12px 24px;
+    justify-content: space-around;
+    flex-wrap: nowrap;
+    margin: auto;
+    width: fit-content;
+}
+
+.divider{
+    height: 20px;
+    width: 1px;
+    margin: 0 12px;
+    background-color: var(--border);
+}
+
+.answerHeaderItem{
+    height: 24px;
+    width: 24px;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--textSecondary);
+    background-color: var(--border);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    line-height: 1.15;
+    cursor: pointer;
+}
+
+.answerHeaderItem.selected{
+    background-color: var(--primary);
+    color: #ffffff;
+}
+
+.contentDescription{
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.answerRight b{
+    text-transform: uppercase;
+}

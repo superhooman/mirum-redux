@@ -1,0 +1,236 @@
+.courseHeader, .card{
+    padding: 20px;
+    border-radius: 13px;
+    border: 1px var(--border) solid;
+}
+
+.courseHeader h1{
+    font-size: 24px;
+    line-height: 1.2;
+}
+
+.courseHeader p{
+    font-size: 15px;
+    color: var(--textSecondary);
+}
+
+.label{
+    font-weight: 500;
+    font-size: 12px;
+    text-transform: uppercase;
+    color: var(--textSecondary)
+}
+
+.courseHeader .label{
+    margin: 16px 0 8px 0;
+}
+
+.card{
+    margin-top: 24px;
+}
+
+.card .label{
+    padding-bottom: 8px;
+}
+
+.label.borderBottom{
+    border-bottom: 1px var(--border) solid;
+}
+
+.collapse{
+    transition: height .4s ease;
+}
+
+.weekHeader{
+    padding: 10px 0;
+    cursor: pointer;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px var(--border) solid;
+}
+
+.weekHeader span{
+    width: calc(100% - 32px);
+    overflow: hidden;
+    font-size: 18px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.weekHeader svg{
+    display: block;
+    transform: none;
+    transition: transform .2s ease;
+}
+
+.week.open .weekHeader svg{
+    transform: rotate(180deg);
+}
+
+.weekDescription{
+    color: var(--textSecondary);
+    margin: 12px 0 0 0;
+}
+
+.weekDescription:empty{
+    margin: 0;
+}
+
+.lesson{
+    padding: 16px 0;
+    border-bottom: 1px var(--border) solid;
+}
+
+.week:last-of-type .lesson:last-of-type{
+    border: none;
+}
+
+.lessonName{
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 1.2;
+    margin-bottom: 8px;
+}
+
+.lesson p{
+    font-size: 15px;
+    margin-bottom: 8px;
+    color: var(--textSecondary);
+}
+
+.lessonNumber{
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 12px;
+    color: var(--textSecondary)
+}
+
+.grid{
+    display: grid;
+    gap: 24px;
+    grid-template-columns: 1fr 1fr;
+}
+
+.grid .card{
+    height: fit-content;
+}
+
+.quiz{
+    padding: 16px 0;
+    
+}
+
+.quiz:not(:last-of-type){
+    border-bottom: 1px var(--border) solid;
+}
+
+.quizInfo{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 2px 0;
+}
+
+.quizInfoLabel, .quizInfoValue{
+    font-size: 14px;
+    color: var(--textSecondary)
+}
+
+.quizTitle{
+    font-weight: 600;
+    line-height: 1.2;
+    margin-bottom: 8px;
+}
+
+.quizInfoLabel{
+    font-weight: 600;
+}
+
+.quizButtons{
+    margin-top: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.quizButtons>button{
+    width: fit-content;
+}
+
+.topItem{
+    padding: 8px 0;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.topItem:not(:last-of-type){
+    border-bottom: 1px var(--border) solid;
+}
+
+.topItemValue{
+    font-weight: 600;
+}
+
+.student{
+    padding: 8px 0;
+}
+
+.student:not(:last-of-type){
+    border-bottom: 1px var(--border) solid;
+}
+
+.quizzesWrap{
+    max-height: 455px;
+    margin: 0 -20px -20px -20px;
+    padding: 0 20px 20px 20px;
+    overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
+}
+
+.quizzesCard{
+    position: relative;
+    overflow: hidden;
+}
+
+.quizzesCard::after{
+    display: block;
+    position: absolute;
+    pointer-events: none;
+    content: "";
+    bottom: 0;
+    left: 20px;
+    width: calc(100% - 40px);
+    height: 24px;
+    background-image: linear-gradient(0deg, var(--back), var(--backTransparent));
+}
+
+@media (max-width: 948px){
+    .grid{
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 900px){
+    .grid{
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (max-width: 768px){
+    .weekHeader span{
+        font-size: 16px;
+    }
+    .weekDescription{
+        font-size: 14px;
+    }
+    .lessonNumber{
+        font-size: 14px;
+    }
+    .grid{
+        grid-template-columns: 1fr;
+    }
+}

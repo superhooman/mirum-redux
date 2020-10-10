@@ -1,0 +1,79 @@
+.modal {
+    position: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 100;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity .2s ease;
+}
+
+.modal.active {
+    opacity: 1;
+    pointer-events: all;
+}
+
+.modalBackdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100%;
+    background-color: rgba(0, 0, 0, .3);
+}
+
+.modalHeader {
+    display: flex;
+    justify-content: space-between;
+    padding: 16px 24px;
+    align-items: center;
+    border-bottom: 1px var(--border) solid;
+}
+
+.modalTitle {
+    width: calc(100% - 24px);
+    overflow: hidden;
+    font-weight: 600;
+    text-overflow: ellipsis;
+}
+
+.modalWrap {
+    position: relative;
+    z-index: 1;
+    max-width: 480px;
+    border-radius: 13px;
+    background-color: var(--back);
+    width: 100%;
+    margin: 24px;
+    transform: scale(.9);
+    transition: transform .2s ease;
+}
+
+.modalContent {
+    padding: 24px;
+    max-height: calc(100vh - 240px);
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+body:global(.dark) .modalWrap{
+    box-shadow: 0 0 0 1px var(--border);
+}
+
+.modal.active .modalWrap {
+    transform: none;
+}
+
+.close {
+    cursor: pointer;
+    transition: opacity .3s ease;
+}
+
+.close:hover {
+    opacity: .7;
+}
