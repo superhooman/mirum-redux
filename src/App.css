@@ -1,6 +1,6 @@
 body {
   --text: #222222;
-  --textSecondary: #787b80;
+  --textSecondary: #66686d;
   --border: #eaeaea;
   --back: #ffffff;
   --backTransparent: rgba(255,255,255,0);
@@ -46,6 +46,12 @@ a {
   height: 1px;
   background-color: var(--border);
   margin: 8px 0;
+}
+
+.react-toast-notifications__toast{
+  max-width: calc(100vw - 16px)!important;
+  margin-left: auto!important;;
+  margin-right: auto!important;;
 }
 
 @media (max-width: 768px) {

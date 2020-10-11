@@ -14,7 +14,7 @@
   color: var(--textSecondary);
 }
 
-.Input input {
+.Input input, .Input textarea {
   font-size: 16px;
   padding: 8px 14px;
   border: 1px var(--border) solid;
@@ -23,7 +23,11 @@
   border-radius: 5px;
 }
 
-.Input input:focus {
+.Input textarea{
+  min-height: 42px;
+}
+
+.Input input:focus, .Input textarea:focus {
   border-color: var(--primary);
   outline: none;
 }

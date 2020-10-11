@@ -1,13 +1,13 @@
 import React from "react";
 
-const Empty = ({ text = "Пусто" }) => (
+const Empty = ({ text = "Пусто", height = 160 }) => (
     <div style={{
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
         justifyContent: "center",
         padding: 24,
-        minHeight: 160,
+        minHeight: height,
         color: "var(--textSecondary)",
         fontSize: 14
     }}>

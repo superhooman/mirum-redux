@@ -105,7 +105,7 @@ const Course = ({ match, token }) => {
             quiz
         })
     }
-    return course.isFetching ? <Loader /> : (
+    return course.isFetching ? (<Skeleton />) : (
         <div className={classes.Course}>
             <div className={classes.courseHeader}>
                 <h1 className={classes.courseTitle}>{course.data.name}</h1>
@@ -124,7 +124,7 @@ const Course = ({ match, token }) => {
                     <div className={classes.label}>Топ 10</div>
                     {top10.isFetching ? <Loader /> : (top10.data.length ? top10.data.map((student, i) => (
                         <TopItem key={i} i={i} student={student} />
-                    )) : <Empty/>)}
+                    )) : <Empty />)}
                     <Button style={{
                         marginTop: 24
                     }} type="default" onClick={() => setModal(true)} size="small">Все участники</Button>
@@ -154,12 +154,37 @@ const Course = ({ match, token }) => {
                 ...results,
                 modal: false
             })} title="Результаты теста">
-                <Results open={results.modal} quiz={results.quiz}/>
+                <Results open={results.modal} quiz={results.quiz} />
             </Modal>
-            <Chat room={course.data.room}/>
+            <Chat room={course.data.room} />
         </div>
     )
 }
+
+const Skeleton = () => (
+    <div className={classes.CourseSkeleton}>
+        <div className={classes.sHeader}>
+            <div className={classes.sHeaderTitle} />
+            <div className={classes.sHeaderDescription} />
+            <div className={classes.label}>Учитель</div>
+            <User />
+        </div>
+        <div className={classes.card}>
+            <div className={classes.label}>Разделы</div>
+            <Loader height={128} />
+        </div>
+        <div className={classes.grid}>
+            <div className={classes.card}>
+                <div className={classes.label}>Топ 10</div>
+                <Loader height={128} />
+            </div>
+            <div className={classes.card}>
+                <div className={classes.label}>Тесты</div>
+                <Loader height={128} />
+            </div>
+        </div>
+    </div>
+)
 
 const TopItem = ({ student, i }) => (
     <div className={classes.topItem}>
@@ -174,7 +199,7 @@ const TopItem = ({ student, i }) => (
 
 const Quiz = ({ quiz, seeResults }) => {
     const history = useHistory();
-    return(
+    return (
         <div className={classes.quiz}>
             <div className={classes.quizTitle}>{quiz.description}</div>
             <div className={classes.quizInfo}>

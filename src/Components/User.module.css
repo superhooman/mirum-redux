@@ -81,3 +81,14 @@
     font-size: 14px;
     color: var(--textSecondary);
 }
+
+.skeleton .userName{
+    background-color: var(--border);
+    width: 128px;
+    height: 18px;
+    border-radius: 3px;
+}
+
+.skeleton .avatar{
+    box-shadow: none;
+}

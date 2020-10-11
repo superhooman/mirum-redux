@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   BrowserRouter as Router,
   Redirect,
@@ -20,15 +20,15 @@ import Pay from "./Pages/Pay";
 
 const App = ({ token, user, login }) => {
   const [logged, setLogged] = useState(token);
-  useState(() => {
-    if(token && !user){
+  useEffect(() => {
+    if (token && !user) {
       Axios({
         url: server + `api/v1/user_info/`,
         headers: {
           Authorization: `Token ${token}`
         }
       }).then((res) => {
-        if(res.data){
+        if (res.data) {
           login(res.data, token, true)
           setLogged(true);
         }
@@ -37,7 +37,11 @@ const App = ({ token, user, login }) => {
   }, [])
   return (
     <Router>
-      <ToastProvider>
+      <ToastProvider
+        autoDismiss
+        autoDismissTimeout={6000}
+        placement="bottom-right"
+      >
         <Switch>
           <Route
             exact
@@ -45,9 +49,9 @@ const App = ({ token, user, login }) => {
             component={Index}
           />
           <Route exact path="/login" component={Login} />
-          <Route path="/dashboard" component={Dashboard}/>
-          <Route path="/logout" exact component={Logout}/>
-          <Route path="/pay" exact component={Pay}/>
+          <Route path="/dashboard" component={Dashboard} />
+          <Route path="/logout" exact component={Logout} />
+          <Route path="/pay" exact component={Pay} />
         </Switch>
       </ToastProvider>
     </Router>

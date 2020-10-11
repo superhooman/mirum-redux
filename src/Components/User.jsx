@@ -16,12 +16,12 @@ const User = ({ user, big, small }) => {
     return user ? (
         <div className={clsx(classes.user, {
             [classes.big]: big,
-            [classes.small]: small
+            [classes.small]: small,
         })}>
             <div style={{
                 backgroundImage: user.avatar ? `url(${getUrl(user.avatar)})` : null
             }} className={classes.avatar}>
-                {!user.avatar ? <span>{getInitials(user.name)}</span>: null}
+                {!user.avatar ? (user.name ? <span>{getInitials(user.name)}</span> : null) : null}
             </div>
             <div className={classes.userInfo}>
                 <div className={classes.userName}>

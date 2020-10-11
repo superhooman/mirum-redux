@@ -1,0 +1,107 @@
+.fc-theme-standard .fc-list-day-cushion{
+    background-color: var(--primary);
+}
+
+.fc-theme-standard .fc-list-day-cushion a{
+    color: #fff!important;
+}
+
+.fc-list-event-title a{
+    color: var(--text)!important;
+}
+
+.fc-theme-standard{
+    --fc-border-color: var(--border)
+}
+
+.fc .fc-event:hover td{
+    background-color: var(--border);
+}
+
+.fc-list{
+    border-radius: 13px;
+    overflow: hidden;
+}
+
+.fc-list-day-text{
+    font-weight: 500;
+    text-transform: capitalize;
+}
+
+.fc-list-day-side-text{
+    line-height: 24px;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.fc-toolbar-chunk{
+    display: flex;
+}
+
+.fc .fc-button{
+    display: block;
+    width: 100%;
+    border: none;
+    color: var(--primary);
+    background-color: transparent;
+    border: 2px var(--primary) solid!important;
+    padding: 4px 12px;
+    font-size: 14px;
+    cursor: pointer;
+    border-radius: 5px;
+    appearance: none;
+    transition: border-color 0.2s ease, background-color 0.2s ease,
+        box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.fc .fc-button:focus {
+    box-shadow: 0 4px 8px 0 var(--primaryTransparent)!important;
+    outline: none !important;
+}
+
+.fc .fc-button {
+    background-color: var(--primary)!important;
+    color: #ffffff;
+}
+  
+.fc .fc-button:hover {
+    background-color: var(--primaryLighter)!important;
+    border-color: var(--primaryLighter)!important;
+}
+  
+.fc .fc-button:disabled {
+    cursor: not-allowed;
+    background-color: var(--border) !important;
+    color: var(--textSecondary) !important;
+    border-color: var(--border) !important;
+}
+.fc-toolbar-title{
+    font-weight: 600;
+    font-size: 24px!important;
+}
+
+@media (max-width: 490px){
+    .fc-toolbar-title{
+        display: none;
+    }
+    .fc-scroller{
+        overflow: auto!important;
+    }
+    .fc-view-harness{
+        height: fit-content!important;
+    }    
+    .fc .fc-view-harness-active > .fc-view{
+        height: fit-content!important;
+        position: unset!important;
+    }
+    .fc .fc-toolbar{
+        flex-direction: row-reverse;
+    }
+    .fc-toolbar-chunk:last-of-type{
+        width: 100%;
+        justify-content: space-between;
+    }
+    .fc-toolbar-chunk:last-of-type>.fc-button{
+        width: fit-content;
+    }
+}

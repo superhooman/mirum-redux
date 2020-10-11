@@ -10,6 +10,9 @@ import {toggleDrawer} from "../Redux/actions";
 const Drawer = ({ children, width = 400, drawer, toggleDrawer }) => {
     useEffect(() => {
         drawer ? document.body.classList.add("scrollDisabledMobile") : document.body.classList.remove("scrollDisabledMobile")
+        return () => {
+            document.body.classList.remove("scrollDisabledMobile") 
+        }
     }, [drawer])
     return (
         <>

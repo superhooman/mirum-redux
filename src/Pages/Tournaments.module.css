@@ -1,8 +1,362 @@
-.Tournaments{
+.tournaments{
+    display: grid;
+    gap: 24px;
+    grid-template-columns: 1fr 1fr;
+    padding-top: 24px;
+}
+
+.tournaments .tournament{
+    height: fit-content;
+}
+
+.tabs{
+    display: flex;
+    margin: 0 -24px;
+    border-bottom: 1px var(--border) solid;
+}
+
+.tab{
+    padding: 12px 24px;
+    font-weight: 600;
+    cursor: pointer;
+    color: var(--textSecondary);
+    font-size: 14px;
+    border-bottom: 2px transparent solid;
+    margin-bottom: -1px;
+    transition: border-color .2s ease, color .2s ease;
+}
+
+.tab.active{
+    border-color: var(--primary);
+    color: var(--primary);
+}
+
+.infoBox{
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
+}
+
+.infoBox:not(:last-of-type){
+    padding-right: 20px;
+    border-right: 1px solid var(--border);
+    margin-right: 20px;
+}
+
+.infoBoxLabel{
+    font-size: 12px;
+    font-weight: 500;
+    white-space: nowrap;
+    color: var(--textSecondary);
+    text-transform: uppercase;
+}
+
+.infoBoxValue{
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 24px;
+    white-space: nowrap;
+}
+
+.boxesWrap{
+    display: flex;
+    overflow-x: auto;
+    padding: 0 10px;
+    width: 100%;
+    -webkit-overflow-scrolling: touch;
+}
+
+.userInfo{
+    width: calc(100% + 10px);
+    position: relative;
+    margin: 24px 0 12px -10px;
+}
+
+.userInfo:after, .userInfo:before {
+    position: absolute;
+    top: 0;
+    content: "";
+    display: block;
+    width: 10px;
+    height: 100%;
+    z-index: 1;
+}
+
+.userInfo:before{
+    background-image: linear-gradient(90deg, var(--back), var(--backTransparent));
+    left: 0
+}
+
+.userInfo:after{
+    background-image: linear-gradient(270deg, var(--back), var(--backTransparent));
+    right: 0;
+}
+
+.tournament{
+    padding: 20px;
+    border-radius: 13px;
+    border: 1px var(--border) solid;
+}
+
+.tournamentTitle{
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.sectionTitle{
+    display: flex;
     align-items: center;
-    min-height: calc(100vh - 192px);
+    color: var(--textSecondary);
+    cursor: pointer;
+}
+
+.sectionTitleText{
+    width: calc(100% - 32px);
+    font-size: 14px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.sectionTitle svg{
+    display: block;
+    margin-left: 8px;
+    transition: transform .2s ease;
+}
+
+.sectionTitle svg.active{
+    transform: rotate(180deg);
+}
+
+.collapseContent{
+    padding-top: 8px;
+}
+
+.collapse{
+    transition: height .4s ease;
+}
+
+.tournamentDate{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 4px 0;
+}
+
+.tournamentDate .label, .tournamentDate .value{
+    font-size: 14px;
+    color: var(--textSecondary);
+}
+
+.tournamentDate .label{
+    font-weight: 600;
+}
+
+.team{
+    padding: 10px 12px;
+    border-radius: 7px;
+    border: 1px var(--border) solid;
+    margin-bottom: 8px;
+}
+
+.teamTitle{
+    margin-bottom: 8px;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.teamLeader{
+    margin-bottom: 4px;
+    padding-bottom: 8px;
+    border-bottom: 1px var(--border) solid;
+}
+
+.teamMember{
+    padding: 4px 0;
+}
+
+.teamMember.withButton{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.teamMember.withButton>div{
+    width: calc(100% - 40px);
+    margin-right: 8px;
+}
+
+.teamMember.withButton button{
+    appearance: none;
+    color: var(--textSecondary);
+    padding: 4px;
+    border: none;
+    outline: none!important;
+    background-color: transparent;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: color .2s ease, background-color .2s ease;
+}
+
+.teamMember.withButton button svg{
+    display: block;
+}
+
+.teamMember.withButton button:hover{
+    color: var(--red);
+}
+
+.teamMember.withButton button:focus{
+    background-color: var(--border);
+}
+
+.stepsHeader{
+    border-bottom: 1px var(--border) solid;
+    margin: -16px -24px 16px;
+    position: relative;
+}
+
+.stepsHeader>div{
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+.stepsHeader::after, .stepsHeader::before{
+    position: absolute;
+    top: 0;
+    content: "";
+    display: block;
+    pointer-events: none;
+    width: 24px;
+    height: 100%;
+    z-index: 1;
+}
+
+.stepsHeader::after{
+    right: 0;
+    background: linear-gradient(270deg, var(--back), var(--backTransparent));
+}
+
+.stepsHeader::before{
+    left: 0;
+    background: linear-gradient(90deg, var(--back), var(--backTransparent));
+}
+
+.stepWrap{
+    display: flex;
+    padding: 8px 24px 12px 24px;
+    justify-content: space-around;
+    flex-wrap: nowrap;
+    margin: auto;
+    width: fit-content;
+}
+
+.divider{
+    height: 20px;
+    width: 1px;
+    margin: 0 12px;
+    background-color: var(--border);
+}
+
+.stepsHeaderItem{
+    height: 24px;
+    width: 24px;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--textSecondary);
+    background-color: var(--border);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    line-height: 1.15;
+    cursor: pointer;
+}
+
+.stepsHeaderItem.selected{
+    background-color: var(--primary);
+    color: #ffffff;
+}
+
+.field{
+    padding: 8px 0;
+}
+
+.field:not(:last-of-type){
+    border-bottom: 1px var(--border) solid;
+}
+
+.fieldLabel{
+    font-size: 12px;
+    text-transform: uppercase;
+    line-height: 1.2;
+    margin-bottom: 4px;
     color: var(--textSecondary)
+}
+
+.fieldValue{
+    line-height: 1.2;
+    font-size: 15px;
+}
+
+
+.Toolbar{
+    margin-top: 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.Toolbar button{
+    width: fit-content;
+}
+
+.Toolbar .arrowButton{
+    padding: 0;
+    appearance: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    background-color: var(--primary);
+    color: #ffffff;
+    width: 32px;
+    height: 32px;
+    outline: none;
+    border-radius: 50%;
+    transition: transform .2s ease;
+    cursor: pointer;
+}
+
+.Toolbar .arrowButton:disabled{
+    background-color: var(--border);
+    color: var(--textSecondary)
+}
+
+.Toolbar .arrowButton:active{
+    transform: scale(.95);
+}
+
+.arrowButton svg{
+    display: block;
+}
+
+@media (max-width: 948px){
+    .tournaments{
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 900px){
+    .tournaments{
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (max-width: 768px){
+    .tournaments{
+        grid-template-columns: 1fr;
+    }
 }

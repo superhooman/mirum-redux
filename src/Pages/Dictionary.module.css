@@ -1,0 +1,108 @@
+.card {
+    padding: 20px;
+    border-radius: 13px;
+    border: 1px var(--border) solid;
+    margin: 24px 0;
+}
+
+.field{
+    margin-bottom: 12px;
+}
+
+.fab{
+    position: fixed;
+    appearance: none;
+    border: none;
+    height: 48px;
+    width: 48px;
+    bottom: 24px;
+    right: 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--primary);
+    border-radius: 50%;
+    color: #ffffff;
+    cursor: pointer;
+    transition: transform .2s ease;
+    margin-left: auto;
+    margin-top: 16px;
+    outline: none!important;
+}
+
+.fab svg{
+    display: block;
+}
+
+.fab:active{
+    transform: scale(0.95);
+}
+
+.wordOriginal{
+    font-weight: 700;
+    font-size: 24px;
+}
+
+.wordTranslation{
+    font-size: 14px;
+    text-transform: uppercase;
+    color: var(--textSecondary)
+}
+
+.wordMeaning{
+    margin-top: 8px;
+    font-size: 16px;
+}
+
+.wordExample{
+    color: var(--textSecondary);
+    font-style: italic;
+    font-size: 15px;
+    margin-top: 8px;
+}
+
+.date{
+    font-size: 12px;
+    margin-top: 8px;
+    text-transform: uppercase;
+    color: var(--textSecondary);
+}
+
+.actions{
+    display: flex;
+    float: right;
+}
+
+.iconButton{
+    display: block;
+    appearance: none;
+    border: none;
+    background-color: transparent;
+    color: var(--textSecondary);
+    cursor: pointer;
+    outline: none!important;
+    padding: 8px;
+    border-radius: 50%;
+    transition: background-color .2s ease;
+}
+
+.iconButton:not(:last-of-type){
+    margin-right: 4px;
+}
+
+.iconButton:hover{
+    color: var(--text);
+    background-color: var(--border);
+}
+
+.iconButton:focus{
+    background-color: var(--border);
+}
+
+.iconButton svg{
+    display: block;
+}
+
+.iconButton:hover .delete{
+    color: var(--red)
+}
