@@ -16,6 +16,7 @@ const initialState = {
   user: null,
   token: localStorage.getItem("mirumToken"),
   drawer: false,
+  cart: [],
   courses: {
     isFetching: true,
     items: []
@@ -52,6 +53,35 @@ const reducer = (state = initialState, action) => {
         ...state,
         token: "",
         user: null
+      }
+    }
+    case "ADD_TO_CARD": {
+      const item = state.cart.filter((el) => el.id === action.item.id)[0];
+      const rest = state.cart.filter((el) => el.id !== action.item.id);
+      let count = item ? item.count + 1 : 1;
+      return {
+        ...state,
+        cart: [
+          ...rest,
+          {
+            ...action.item,
+            count: count
+          }
+        ]
+      }
+    }
+    case "REMOVE_FROM_CART": {
+      const cart = [...state.cart];
+      cart.splice(action.i, 1);
+      return {
+        ...state,
+        cart
+      }
+    }
+    case "CLEAR_CART": {
+      return {
+        ...state,
+        cart: []
       }
     }
     default: {

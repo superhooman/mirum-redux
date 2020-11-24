@@ -1,0 +1,81 @@
+.Navbar{
+    padding: 16px 0;
+    box-shadow: 0 -1px 0 0 var(--border) inset;
+    position: fixed;
+    width: 100%;
+    backdrop-filter: blur(4px) saturate(120%);
+    top: 0;
+    z-index: 99;
+    background-color: var(--backSemiTransparent);
+}
+
+.Navbar>div{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.brand{
+    display: flex;
+    align-items: center;
+}
+  
+.brand span{
+    max-width: calc(100% - 44px);
+    margin-left: 12px;
+    text-transform: uppercase;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 3px;
+    color: var(--text);
+}
+
+.cart{
+    position: relative;
+}
+
+.cartBadge{
+    display: block;
+    position: absolute;
+    left: -12px;
+    bottom: -8px;
+    font-size: 10px;
+    padding: 3px;
+    line-height: 1.15;
+    min-width: 20px;
+    font-weight: 600;
+    border-radius: 24px;
+    text-align: center;
+    color: #fff;
+    background-color: var(--primary);
+}
+
+.right{
+    display: flex;
+    align-items: center;
+}
+
+.balance{
+    margin-left: 12px;
+    border-left: 1px var(--border) solid;
+    padding-left: 12px;
+    line-height: 1.2;
+}
+
+.balance .label{
+    font-weight: bold;
+    font-size: 10px;
+    color: var(--textSecondary);
+    text-transform: uppercase;
+    margin-bottom: 4px;
+}
+
+.balance .value{
+    font-size: 14px;
+}
+
+@media (max-width: 440px){
+    .brand span{
+        display: none;
+    }
+}

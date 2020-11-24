@@ -17,6 +17,9 @@ import { bindActionCreators } from "redux";
 import { login } from "./Redux/actions";
 import Logout from "./Pages/Logout";
 import Pay from "./Pages/Pay";
+import ScrollToTop from "./ScrollToTop";
+import Store from "./Pages/Store/Index";
+import Cart from "./Pages/Store/Cart";
 
 const App = ({ token, user, login }) => {
   const [logged, setLogged] = useState(token);
@@ -42,17 +45,21 @@ const App = ({ token, user, login }) => {
         autoDismissTimeout={6000}
         placement="bottom-right"
       >
-        <Switch>
-          <Route
-            exact
-            path="/"
-            component={Index}
-          />
-          <Route exact path="/login" component={Login} />
-          <Route path="/dashboard" component={Dashboard} />
-          <Route path="/logout" exact component={Logout} />
-          <Route path="/pay" exact component={Pay} />
-        </Switch>
+        <ScrollToTop>
+          <Switch>
+            <Route
+              exact
+              path="/"
+              component={Index}
+            />
+            <Route exact path="/login" component={Login} />
+            <Route path="/dashboard" component={Dashboard} />
+            <Route path="/logout" exact component={Logout} />
+            <Route path="/pay" exact component={Pay} />
+            <Route path="/store" exact component={Store} />
+            <Route path="/store/cart" exact component={Cart} />
+          </Switch>
+        </ScrollToTop>
       </ToastProvider>
     </Router>
   );

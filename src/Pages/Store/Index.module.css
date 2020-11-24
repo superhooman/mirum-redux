@@ -1,0 +1,84 @@
+.hero{
+    padding-top: 68px;
+    background-image: url(../../Assets/hero.png);
+    background-position: center;
+    background-size: cover;
+    box-shadow: 0 -1px 0 0 var(--border) inset;
+}
+
+.hero>div{
+    padding: 128px 24px;
+}
+
+.hero p{
+    max-width: 640px;
+    color: var(--textSecondary);
+}
+
+.itemsWrap{
+    padding: 48px 0;
+}
+
+.itemsWrap p{
+    color: var(--textSecondary);
+    text-align: center;
+}
+
+.items{
+    display: grid;
+    padding-top: 24px;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+}
+
+.back{
+    display: flex;
+    align-items: center;
+    margin-bottom: 16px;
+    margin-top: -16px;
+    font-size: 14px;
+    width: fit-content;
+}
+
+.back svg{
+    display: block;
+    margin-right: 8px;
+}
+
+@media (max-width: 1360px){
+    .hero{
+        background-size: 150%;
+    }
+}
+
+@media (max-width: 768px){
+    .items{
+        grid-template-columns: 1fr;
+        gap: 48px;
+    }
+    .hero{
+        text-align: center;
+    }
+    .hero h1{
+        font-size: 24px;
+        line-height: 1.2;
+    }
+    .hero p{
+        font-size: 16px;
+        padding: 0 24px;
+    }
+    .back{
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+@media (max-width: 496px){
+    .items{
+        grid-template-columns: 1fr;
+        gap: 48px;
+    }
+    .hero>div{
+        padding: 64px 24px;
+    }
+}

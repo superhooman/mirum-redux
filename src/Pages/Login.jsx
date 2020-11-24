@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import {connect} from "react-redux";
-import {bindActionCreators} from "redux";
+import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
 import { Link, Redirect } from "react-router-dom";
 import logo from "../Assets/logoNoText.svg";
 import glyph from "../Assets/glyph.svg";
@@ -8,20 +8,20 @@ import classes from "./Login.module.css";
 import Input from "../Components/Input";
 import Button from "../Components/Button";
 import Checkbox from "../Components/Checkbox";
-import {login} from "../Redux/actions"
+import { login } from "../Redux/actions"
 import Axios from "axios";
 import { server } from "../config";
-import {useToasts} from "react-toast-notifications"
+import { useToasts } from "react-toast-notifications"
 
-const Login = ({login, token, user}) => {
+const Login = ({ login, token, user }) => {
   const { addToast } = useToasts()
   const [loading, setLoading] = useState(false)
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [remember, setRemember] = useState(true);
   const submit = () => {
-    if(loading) return;
-    if(!email || !password){
+    if (loading) return;
+    if (!email || !password) {
       return addToast("Заполните все поля", { appearance: 'error' })
     }
     setLoading(true);
@@ -33,18 +33,18 @@ const Login = ({login, token, user}) => {
         password
       }
     }).then((res) => {
-      if(res.data.token){
+      if (res.data.token) {
         setLoading(false)
         return login(res.data.user, res.data.token, remember)
-      }else{
+      } else {
         setLoading(false)
         return addToast(res.data.detail || "Ошибка", { appearance: 'error' })
       }
     }).catch(err => {
-      if(err.response){
+      if (err.response) {
         setLoading(false)
         return addToast(err.response.data.detail || "Ошибка", { appearance: 'error' })
-      }else{
+      } else {
         setLoading(false)
         return addToast("Ошибка", { appearance: 'error' })
       }
@@ -52,13 +52,13 @@ const Login = ({login, token, user}) => {
   }
   return (
     <div className={classes.Login}>
-      {token && user ? <Redirect to="/dashboard"/> : null}
+      {token && user ? <Redirect to="/dashboard" /> : null}
       <div className={classes.plate}>
         <div className={classes.main}>
           <Link to="/"><div className={classes.brand}>
-                    <img height={36} className={classes.logo} src={logo} alt="Mirum logo" />
-                    <span>Mirum</span>
-                </div></Link>
+            <img height={36} className={classes.logo} src={logo} alt="Mirum logo" />
+            <span>Mirum</span>
+          </div></Link>
           <form onSubmit={(e) => {
             e.preventDefault();
             submit();
@@ -85,7 +85,7 @@ const Login = ({login, token, user}) => {
               />
             </div>
             <div className={classes.field}>
-              <Checkbox label="Запонмить?" value={remember} onChange={setRemember} />
+              <Checkbox label="Запомнить?" value={remember} onChange={setRemember} />
             </div>
             <Button disabled={loading}>{loading ? "Загрузка..." : "Войти"}</Button>
             <Link className={classes.link} to="/pay">Онлайн оплата</Link>
@@ -94,7 +94,7 @@ const Login = ({login, token, user}) => {
         </div>
       </div>
       <div className={classes.picture}>
-        <div className={classes.pattern}/>
+        <div className={classes.pattern} />
       </div>
     </div>
   );

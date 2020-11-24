@@ -3,7 +3,8 @@ body {
   --textSecondary: #66686d;
   --border: #eaeaea;
   --back: #ffffff;
-  --backTransparent: rgba(255,255,255,0);
+  --backTransparent: rgba(255, 255, 255, 0);
+  --backSemiTransparent: rgba(255, 255, 255, 0.8);
   --primary: #6c19cf;
   --primaryTransparent: rgba(106, 25, 204, 0.2);
   --primaryLighter: #813fd1;
@@ -18,6 +19,7 @@ body {
 body.dark {
   --back: #131313;
   --backTransparent: rgba(19, 19, 19, 0);
+  --backSemiTransparent: rgba(15,15,15,0.8);
   --text: #fbfbfb;
   --textSecondary: #a8a8a8;
   --border: #4b4b4b;

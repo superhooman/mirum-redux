@@ -18,3 +18,17 @@ export const setCourses = (courses) => ({
 export const logout = () => ({
   type: "LOGOUT",
 })
+
+export const addToCart = (item) => ({
+  type: "ADD_TO_CARD",
+  item
+})
+
+export const removeFromCart = (i) => ({
+  type: "REMOVE_FROM_CART",
+  i
+})
+
+export const clearCart = () => ({
+  type: "CLEAR_CART",
+})
