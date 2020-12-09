@@ -223,6 +223,7 @@ const TournamentSteps = ({ history, tournament, token, team }) => {
             }
         })
     }, [tournament])
+    const results = steps.isFetching ? false : moment().isAfter(steps.items[step].end_time);
     return steps.isFetching ? <Loader /> : (
         steps.items.length ? (
             <div>
@@ -250,8 +251,31 @@ const TournamentSteps = ({ history, tournament, token, team }) => {
                     <Field label="Тип" value={steps.items[step].type} />
                     <Field label="Время" value={`${steps.items[step].duration} мин.`} />
                     <Field label="Edcoins" value={steps.items[step].N} />
+                    {steps.items[step].winner_num ? <Field label="Кол-во победителей" value={`До ${steps.items[step].winner_num} победителей`} /> : null}
                 </div>
-                <Toolbar goTo={() => history.push(`/dashboard/stage/${steps.items[step].id}/${team}`)} step={step} steps={steps.items} setStep={setStep} />
+                {results ? (
+                    <table className={classes.results}>
+                        <thead>
+                            <tr>
+                                <th>№</th>
+                                <th>Команда</th>
+                                <th>Результат</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {steps.items[step].tournament.teams.sort((a, b) => b.stage_results[step] - a.stage_results[step]).map((el, i) => (
+                                <tr className={clsx({
+                                    [classes.winner]: i < steps.items[step].winner_num
+                                })} key={i}>
+                                    <td>{i + 1}</td>
+                                    <td>{el.name}</td>
+                                    <td>{el.stage_results[step]}</td>
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table>
+                ) : null}
+                <Toolbar hideButton={results} goTo={() => history.push(`/dashboard/stage/${steps.items[step].id}/${team}`)} step={step} steps={steps.items} setStep={setStep} />
             </div>
         ) : <Empty />
     )
@@ -264,14 +288,14 @@ const Field = ({ label, value }) => (
     </div>
 )
 
-const Toolbar = ({ goTo, step, steps, setStep }) => (
+const Toolbar = ({ goTo, step, steps, setStep, hideButton = false }) => (
     <div className={classes.Toolbar}>
         <button disabled={step === 0} onClick={() => {
             step !== 0 && setStep(step - 1);
         }} className={classes.arrowButton}>
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M15 18l-6-6 6-6" /></svg>
         </button>
-        <Button onClick={goTo} disabled={!steps[step].distributed || moment().isAfter(steps[step].end_time)}>Начать</Button>
+        {hideButton ? null : <Button onClick={goTo} disabled={moment().isAfter(steps[step].end_time)}>Начать</Button>}
         <button disabled={step === steps.length - 1} onClick={() => {
             step < steps.length - 1 && setStep(step + 1);
         }} className={classes.arrowButton}>
@@ -375,7 +399,7 @@ const TournamentItem = ({ openMore, data, registerToTeam, user, registerTeam, my
                         ))}
                         <Button onClick={() => {
                             openMore(data, data.teams.filter(team => (team.captain.email === user.email || team.mates.map((el) => el.email).indexOf(user.email) > -1))[0].name)
-                        }}>Этапы</Button>
+                        }}>{moment().isBefore(data.end_time) ? "Этапы" : "Результаты"}</Button>
                     </div>
                 )
             }

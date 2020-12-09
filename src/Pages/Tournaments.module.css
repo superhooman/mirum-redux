@@ -343,6 +343,83 @@
     display: block;
 }
 
+.results{
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0px;
+    margin-top: 8px;
+}
+
+.results thead{
+    margin-bottom: 8px;
+}
+
+.results th{
+    display: table-cell;
+    padding: 4pt 8pt;
+    font-size: 0.75rem;
+    font-weight: normal;
+    text-align: left;
+    letter-spacing: 0px;
+    min-height: 2.5rem;
+    color: var(--textSecondary);
+    border-bottom: 1px solid var(--border);
+    border-top: 1px solid var(--border);
+    border-radius: 0px;
+}
+
+.results th:first-child{
+    border-bottom: 1px solid var(--border);
+    border-left: 1px solid var(--border);
+    border-top: 1px solid var(--border);
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+
+.results th:last-child{
+    border-bottom: 1px solid var(--border);
+    border-right: 1px solid var(--border);
+    border-top: 1px solid var(--border);
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+.results td{
+    font-size: 14px;
+    padding: 4pt 8pt;
+    border-top: 2px var(--back) solid;
+    border-bottom: 2px var(--back) solid
+}
+
+.results td:first-child{
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    border-left: 2px var(--back) solid;
+}
+
+.results td:last-child{
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border-right: 2px var(--back) solid;
+}
+
+.results tbody:before {
+    content:"@";
+    display:block;
+    line-height: 1px;
+    text-indent:-99999px;
+}
+
+.results tr.winner td{
+    background-color: var(--green);
+    color: #ffffff;
+}
+
+.results tr:not(.winner) td{
+    background-color: var(--red);
+    color: #ffffff;
+}
+
 @media (max-width: 948px){
     .tournaments{
         grid-template-columns: 1fr;
