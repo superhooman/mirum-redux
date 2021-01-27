@@ -14,6 +14,7 @@ import moment from "moment";
 import "moment/locale/ru";
 import Modal from "../Components/Modal";
 import Results from "../Components/Results";
+import TeacherResults from "../Components/TeacherResults"
 import Chat from "../Components/Chat";
 
 moment.locale("ru")
@@ -24,9 +25,10 @@ const stripHtml = (html) => {
     return tmp.textContent || tmp.innerText || "";
 }
 
-const Course = ({ match, token }) => {
+const Course = ({ match, token, user }) => {
     const [scrolled, setScrolled] = useState(false);
     const [results, setResults] = useState({
+        asTeacher: false,
         modal: false,
         quiz: null,
     })
@@ -101,6 +103,7 @@ const Course = ({ match, token }) => {
     }, [match.params.id])
     const seeResults = (quiz) => {
         setResults({
+            asTeacher: user.type === "teacher",
             modal: true,
             quiz
         })
@@ -137,7 +140,7 @@ const Course = ({ match, token }) => {
                         setScrolled(e.target.scrollTop > 1)
                     }} className={classes.quizzesWrap}>
                         {quizzes.isFetching ? <Loader /> : quizzes.data.map((quiz) => (
-                            <Quiz seeResults={seeResults} quiz={quiz} key={quiz.id} />
+                            <Quiz user={user} seeResults={seeResults} quiz={quiz} key={quiz.id} />
                         ))}
                     </div>
                 </div>
@@ -153,8 +156,10 @@ const Course = ({ match, token }) => {
             <Modal open={results.modal} close={() => setResults({
                 ...results,
                 modal: false
-            })} title="Результаты теста">
-                <Results open={results.modal} quiz={results.quiz} />
+            })} className={clsx({
+                [classes.asTeacher]: results.asTeacher
+            })} width={results.asTeacher ? 800 : 480} title="Результаты теста">
+                {results.asTeacher ? <TeacherResults open={results.modal} quiz={results.quiz} /> : <Results open={results.modal} quiz={results.quiz} />}
             </Modal>
             <Chat room={course.data.room} />
         </div>
@@ -197,7 +202,7 @@ const TopItem = ({ student, i }) => (
     </div>
 )
 
-const Quiz = ({ quiz, seeResults }) => {
+const Quiz = ({ quiz, seeResults, user }) => {
     const history = useHistory();
     return (
         <div className={classes.quiz}>
@@ -215,7 +220,7 @@ const Quiz = ({ quiz, seeResults }) => {
                 <div className={classes.quizInfoValue}>{quiz.duration} мин</div>
             </div>
             <div className={classes.quizButtons}>
-                <Button disabled={moment().isAfter(quiz.end_time)} onClick={() => history.push(`quiz/${quiz.id}`)} size="small">Пройти тест</Button>
+                <Button disabled={(user && user.type === "teacher") || moment().isAfter(quiz.end_time)} onClick={() => history.push(`quiz/${quiz.id}`)} size="small">Пройти тест</Button>
                 <Button onClick={() => seeResults(quiz)} size="small">Ответы</Button>
             </div>
         </div>
@@ -234,9 +239,11 @@ const Week = ({ week }) => {
             </div>
             <Collapse theme={{ collapse: classes.collapse, content: classes.collapseContent }} isOpened={open}>
                 <p className={classes.weekDescription}>{week.week_description}</p>
-                {week.lessons.map((lesson) => (
-                    <Lesson lesson={lesson} key={lesson.id} />
-                ))}
+                {week.lessons.map((lesson) => {
+                    return(lesson.is_shown ? (
+                        <Lesson lesson={lesson} key={lesson.id} />
+                    ) : null)
+                })}
             </Collapse>
         </div>
     )
@@ -250,7 +257,7 @@ const Lesson = ({ lesson }) => (
         <Link style={{
             display: "block",
             width: "fit-content"
-        }} to={`lesson/${lesson.id}`}><Button size="small" style={{
+        }} to={`lesson/${lesson.id}/`}><Button size="small" style={{
             width: "fit-content"
         }}>Открыть</Button></Link>
     </div>

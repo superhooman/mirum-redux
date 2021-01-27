@@ -226,6 +226,25 @@
     margin-bottom: 16px;
 }
 
+.asTeacher ::-webkit-scrollbar{
+    height: 12px;
+    width: 12px;
+}
+
+.asTeacher ::-webkit-scrollbar-track {
+    margin: 0;
+    background-color: var(--border);
+}
+
+.asTeacher ::-webkit-scrollbar-thumb{
+    border-radius: 6px;
+    background-color: var(--primaryTransparent);
+}
+
+.asTeacher ::-webkit-scrollbar-thumb:hover{
+    background-color: var(--primary);
+}
+
 @media (max-width: 948px){
     .grid{
         grid-template-columns: 1fr;

@@ -136,3 +136,34 @@
 .arrowButton svg{
     display: block;
 }
+
+.answers{
+    border-top: 1px var(--border) solid;
+    padding-top: 24px;
+}
+
+.label{
+    font-weight: 500;
+    font-size: 12px;
+    text-transform: uppercase;
+    color: var(--textSecondary);
+}
+
+.answerRow{
+    padding: 8px 0;
+    border-bottom: 1px var(--border) solid;
+}
+
+.answerRowStudent{
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--textSecondary);
+}
+
+.answerRowContent:empty::after{
+    content: "Нет ответа";
+    font-weight: 600;
+    text-decoration: line-through;
+    color: var(--textSecondary);
+    opacity: .8;
+}

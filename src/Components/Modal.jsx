@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import classes from "./Modal.module.css"
 import clsx from "clsx";
 
-const Modal = ({ children, open, close, title }) => {
+const Modal = ({ children, open, close, title, className = "", width }) => {
     useEffect(() => {
         open ? document.body.classList.add("scrollDisabled") : document.body.classList.remove("scrollDisabled")
     }, [open])
@@ -10,9 +10,11 @@ const Modal = ({ children, open, close, title }) => {
     <div className={clsx({
         [classes.modal]: true,
         [classes.active]: open
-    })}>
+    }, className)}>
         <div onClick={close} className={classes.modalBackdrop} />
-        <div className={classes.modalWrap}>
+        <div style={{
+            maxWidth: width
+        }} className={classes.modalWrap}>
             <div className={classes.modalHeader}>
                 <div className={classes.modalTitle}>{title}</div>
                 <div onClick={close} className={classes.close}>
