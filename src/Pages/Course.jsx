@@ -153,12 +153,12 @@ const Course = ({ match, token, user }) => {
                     </div>
                 ))}
             </Modal>
-            <Modal open={results.modal} close={() => setResults({
+            <Modal notMax={results.asTeacher} open={results.modal} close={() => setResults({
                 ...results,
                 modal: false
             })} className={clsx({
                 [classes.asTeacher]: results.asTeacher
-            })} width={results.asTeacher ? 800 : 480} title="Результаты теста">
+            })} width={results.asTeacher ? 1024 : 480} padding={results.asTeacher ? 0 : 24} title="Результаты теста">
                 {results.asTeacher ? <TeacherResults open={results.modal} quiz={results.quiz} /> : <Results open={results.modal} quiz={results.quiz} />}
             </Modal>
             <Chat room={course.data.room} />
@@ -240,7 +240,7 @@ const Week = ({ week }) => {
             <Collapse theme={{ collapse: classes.collapse, content: classes.collapseContent }} isOpened={open}>
                 <p className={classes.weekDescription}>{week.week_description}</p>
                 {week.lessons.map((lesson) => {
-                    return(lesson.is_shown ? (
+                    return (lesson.is_shown ? (
                         <Lesson lesson={lesson} key={lesson.id} />
                     ) : null)
                 })}
