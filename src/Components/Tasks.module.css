@@ -1,169 +1,246 @@
-.taskHeader{
-    border-bottom: 1px var(--border) solid;
-    margin: -16px -24px 16px;
-    position: relative;
-    
+.taskHeader {
+  border-bottom: 1px var(--border) solid;
+  margin: -16px -24px 16px;
+  position: relative;
 }
 
-.taskHeader>div{
-    -webkit-overflow-scrolling: touch;
-    overflow: auto;
+.taskHeader > div {
+  -webkit-overflow-scrolling: touch;
+  overflow: auto;
 }
 
-.taskHeader::after, .taskHeader::before{
-    position: absolute;
-    top: 0;
-    content: "";
-    display: block;
-    width: 24px;
-    height: 100%;
-    z-index: 1;
+.taskHeader::after,
+.taskHeader::before {
+  position: absolute;
+  top: 0;
+  content: "";
+  display: block;
+  width: 24px;
+  height: 100%;
+  z-index: 1;
 }
 
-.taskHeader::after{
-    right: 0;
-    background: linear-gradient(270deg, var(--back), var(--backTransparent));
+.taskHeader::after {
+  right: 0;
+  background: linear-gradient(270deg, var(--back), var(--backTransparent));
 }
 
-.taskHeader::before{
-    left: 0;
-    background: linear-gradient(90deg, var(--back), var(--backTransparent));
+.taskHeader::before {
+  left: 0;
+  background: linear-gradient(90deg, var(--back), var(--backTransparent));
 }
 
-.stepWrap{
-    display: flex;
-    padding: 8px 24px 12px 24px;
-    justify-content: space-around;
-    flex-wrap: nowrap;
-    margin: auto;
-    width: fit-content;
+.stepWrap {
+  display: flex;
+  padding: 8px 24px 12px 24px;
+  justify-content: space-around;
+  flex-wrap: nowrap;
+  margin: auto;
+  width: fit-content;
 }
 
-.divider{
-    height: 20px;
-    width: 1px;
-    margin: 0 12px;
-    background-color: var(--border);
-
+.divider {
+  height: 20px;
+  width: 1px;
+  margin: 0 12px;
+  background-color: var(--border);
 }
 
-.taskHeaderItem{
-    height: 24px;
-    width: 24px;
-    font-size: 13px;
-    font-weight: 600;
-    color: var(--textSecondary);
-    background-color: var(--border);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    line-height: 1.15;
-    cursor: pointer;
+.taskHeaderItem {
+  height: 24px;
+  width: 24px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--textSecondary);
+  background-color: var(--border);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  line-height: 1.15;
+  cursor: pointer;
 }
 
-.taskHeaderItem.selected{
-    background-color: var(--primary);
-    color: #ffffff;
+.taskHeaderItem.selected {
+  background-color: var(--primary);
+  color: #ffffff;
 }
 
-.content{
-    padding: 12px 0;
+.content {
+  padding: 12px 0;
 }
 
-.content img{
-    max-width: 100%;
+.content p:empty {
+  display: none;
 }
 
-.Tasks textarea{
-    display: block;
-    width: 100%;
-    resize: vertical;
-    min-height: 56px;
-    max-height: 160px;
-    font-size: 16px;
-    padding: 8px 14px;
-    border: 1px var(--border) solid;
-    background-color: var(--back);
-    color: var(--text);
-    border-radius: 5px;
-    outline: none!important;
+.content img {
+  max-width: 100%;
+}
+
+.Tasks textarea {
+  display: block;
+  width: 100%;
+  resize: vertical;
+  min-height: 56px;
+  max-height: 160px;
+  font-size: 16px;
+  padding: 8px 14px;
+  border: 1px var(--border) solid;
+  background-color: var(--back);
+  color: var(--text);
+  border-radius: 5px;
+  outline: none !important;
 }
 
 .Tasks textarea:focus {
-    border-color: var(--primary);
-    outline: none;
+  border-color: var(--primary);
+  outline: none;
 }
 
-.Toolbar{
-    margin-top: 24px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+.Toolbar {
+  margin-top: 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  background-image: linear-gradient(
+    to top,
+    var(--back),
+    var(--backTransparent)
+  );
+  bottom: -24px;
+  padding-bottom: 24px;
 }
 
-.Toolbar button{
-    width: fit-content;
+.Toolbar button {
+  width: fit-content;
 }
 
-.Toolbar .arrowButton{
-    padding: 0;
-    appearance: none;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border: none;
-    background-color: var(--primary);
-    color: #ffffff;
-    width: 32px;
-    height: 32px;
-    outline: none;
-    border-radius: 50%;
-    transition: transform .2s ease;
-    cursor: pointer;
+.Toolbar .arrowButton {
+  padding: 0;
+  appearance: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  background-color: var(--primary);
+  color: #ffffff;
+  width: 32px;
+  height: 32px;
+  outline: none;
+  border-radius: 50%;
+  transition: transform 0.2s ease;
+  cursor: pointer;
 }
 
-.Toolbar .arrowButton:disabled{
-    background-color: var(--border);
-    color: var(--textSecondary)
+.Toolbar .arrowButton:disabled {
+  background-color: var(--border);
+  color: var(--textSecondary);
 }
 
-.Toolbar .arrowButton:active{
-    transform: scale(.95);
+.Toolbar .arrowButton:active {
+  transform: scale(0.95);
 }
 
-.arrowButton svg{
-    display: block;
+.arrowButton svg {
+  display: block;
 }
 
-.answers{
-    border-top: 1px var(--border) solid;
-    padding-top: 24px;
+.answers {
+  border-top: 1px var(--border) solid;
+  padding-top: 24px;
 }
 
-.label{
-    font-weight: 500;
-    font-size: 12px;
-    text-transform: uppercase;
-    color: var(--textSecondary);
+.label {
+  font-weight: 500;
+  font-size: 12px;
+  text-transform: uppercase;
+  color: var(--textSecondary);
 }
 
-.answerRow{
-    padding: 8px 0;
-    border-bottom: 1px var(--border) solid;
+.answerRow {
+  padding: 8px 0 12px 0;
+  border-bottom: 1px var(--border) solid;
 }
 
-.answerRowStudent{
-    font-size: 14px;
-    font-weight: 600;
-    color: var(--textSecondary);
+.answerRowStudent {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--textSecondary);
 }
 
-.answerRowContent:empty::after{
-    content: "Нет ответа";
-    font-weight: 600;
-    text-decoration: line-through;
-    color: var(--textSecondary);
-    opacity: .8;
+.answerRowContent:not(:empty)::before {
+  content: "Ответ: ";
+  font-weight: 600;
+  color: var(--textSecondary);
+}
+
+.answerRowContent:empty::after {
+  content: "Нет ответа";
+  font-weight: 600;
+  text-decoration: line-through;
+  color: var(--textSecondary);
+  opacity: 0.8;
+}
+
+.answerRowControls {
+  position: relative;
+  overflow: hidden;
+  padding: 12px;
+  margin-top: 8px;
+  border-radius: 12px;
+  border: 1px var(--border) solid;
+}
+
+.answerRowControls.checked::after {
+  content: "Проверенно";
+  display: block;
+  font-size: 14px;
+  background-color: var(--primary);
+  color: #ffffff;
+  padding: 0 36px;
+  text-align: center;
+  position: absolute;
+  top: 0;
+  right: 0;
+  transform: translate(34px, 12px) rotate(24deg);
+}
+
+.answerRowCheckbox {
+  margin-bottom: 8px;
+}
+
+.answerBlock {
+  padding: 12px;
+  margin-top: 8px;
+  border-radius: 12px;
+  border: 1px var(--border) solid;
+}
+
+.answerStatus.ok {
+  color: var(--green);
+}
+
+.answerStatus.bad {
+  color: var(--red);
+}
+
+.answerStatus::before {
+  content: "Статус: ";
+  font-weight: 600;
+  color: var(--textSecondary) !important;
+}
+
+.answerComment::before {
+  content: "Комментарий: ";
+  font-weight: 600;
+  color: var(--textSecondary) !important;
+}
+
+.answerText::before {
+  content: "Ответ: ";
+  font-weight: 600;
+  color: var(--textSecondary) !important;
 }

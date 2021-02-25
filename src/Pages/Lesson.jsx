@@ -53,14 +53,14 @@ const Lesson = ({ match, token, user }) => {
                     <div style={{
                         marginTop: 8
                     }}>
-                        <Button onClick={()=>setModal({
-                        open: true,
-                        type: "homework",
-                        title: "Homework",
-                        asTeacher: true
-                    })} icon={<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M20 9v11a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V9"/><path d="M9 22V12h6v10M2 10.6L12 2l10 8.6"/></svg>} style={{
-                        width: "auto"
-                    }} size="small">Homeworks</Button>
+                        <Button onClick={() => setModal({
+                            open: true,
+                            type: "homework",
+                            title: "Homework",
+                            asTeacher: true
+                        })} icon={<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M20 9v11a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V9" /><path d="M9 22V12h6v10M2 10.6L12 2l10 8.6" /></svg>} style={{
+                            width: "auto"
+                        }} size="small">Homeworks</Button>
                     </div>
                 ) : null}
                 {(user && user.type === "student") ? <div className={classes.buttons}>
@@ -70,7 +70,7 @@ const Lesson = ({ match, token, user }) => {
                         title: "Classwork",
                         asTeacher: false
                     })} size="small">Classwork</Button> : null}
-                {lesson.data.show_homework && lesson.data.homeworks.length ? <Button icon={<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M20 9v11a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V9"/><path d="M9 22V12h6v10M2 10.6L12 2l10 8.6"/></svg>} onClick={() => setModal({
+                    {lesson.data.show_homework && lesson.data.homeworks.length ? <Button icon={<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M20 9v11a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V9" /><path d="M9 22V12h6v10M2 10.6L12 2l10 8.6" /></svg>} onClick={() => setModal({
                         open: true,
                         type: "homework",
                         title: "Homework",
@@ -81,13 +81,13 @@ const Lesson = ({ match, token, user }) => {
             <div className={classes.card}>
                 <div dangerouslySetInnerHTML={{ __html: lesson.data.body }} className={classes.content} />
                 <div className={classes.resourses}>
-                    {lesson.data.resources.map((el) => {
+                    {lesson.data.resources.map((el, i) => {
                         return el.type === "video" ? (
-                            <video controls="controls" controlsList="nodownload">
+                            <video key={i} controls="controls" controlsList="nodownload">
                                 <source src={el.src.replace("http://", "https://")} type="video/mp4"></source>
                             </video>
                         ) : (
-                                <audio controls controlsList="nodownload">
+                                <audio key={i} controls controlsList="nodownload">
                                     <source src={el.src.replace("http://", "https://")} type="audio/mpeg" />
                                 </audio>
                             )
@@ -98,7 +98,7 @@ const Lesson = ({ match, token, user }) => {
                 ...modal,
                 open: false
             })}>
-                <Tasks asTeacher={modal.asTeacher} token={token} lessonTasks={modal.type === "task" ? lesson.data.tasks : lesson.data.homeworks} type={modal.type} lesson={lesson.data}/>
+                <Tasks email={user && user.email} asTeacher={modal.asTeacher} token={token} lessonTasks={modal.type === "task" ? lesson.data.tasks : lesson.data.homeworks} type={modal.type} lesson={lesson.data} />
             </Modal>
         </div>
     )
